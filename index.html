@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>سـدّد دَين أمي | 3000 درهم</title>
+  <!-- خط عربي أنيق -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: linear-gradient(145deg, #f9f7f3 0%, #fff4e6 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      direction: rtl;
+    }
+
+    .app-container {
+      max-width: 700px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 48px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(232, 196, 136, 0.1);
+      padding: 24px 20px 30px;
+      border: 1px solid rgba(255, 215, 170, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    /* رأس التطبيق */
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .app-header i {
+      font-size: 2.2rem;
+      color: #b76e2e;
+      background: #fbe9d2;
+      padding: 12px;
+      border-radius: 30px;
+      box-shadow: 0 6px 10px rgba(182, 110, 46, 0.1);
+    }
+
+    .app-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #4a2c1b;
+      letter-spacing: -0.5px;
+    }
+
+    .app-header h1 span {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #a47148;
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* بطاقة المبلغ الكلي والمتبقي */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 28px;
+      padding: 18px 12px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+      border: 1px solid #ffede1;
+      transition: transform 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .stat-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #7b5a47;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #3f2a1c;
+      line-height: 1.2;
+    }
+
+    .stat-sub {
+      color: #9b7b64;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .highlight-green {
+      color: #2e7d5e;
+    }
+
+    .highlight-amber {
+      color: #b45330;
+    }
+
+    /* شريط التقدم */
+    .progress-section {
+      background: #f0e3d6;
+      border-radius: 40px;
+      padding: 16px 18px;
+      margin-bottom: 28px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #4e3626;
+    }
+
+    .progress-bar-container {
+      height: 18px;
+      background: #ddcbbc;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #c28b5c, #b16e3a);
+      border-radius: 30px;
+      transition: width 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
+      box-shadow: 0 0 8px #d49c6c;
+    }
+
+    /* نموذج الإضافة */
+    .add-payment {
+      background: #ffffffd6;
+      backdrop-filter: blur(4px);
+      border-radius: 36px;
+      padding: 18px 18px 22px;
+      margin-bottom: 24px;
+      border: 1px solid #ffdbbf;
+    }
+
+    .form-title {
+      font-weight: 700;
+      color: #3e2a1b;
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .input-wrapper {
+      flex: 2 1 180px;
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 60px;
+      padding: 4px 16px;
+      border: 1.5px solid #edd7c4;
+      transition: border 0.15s;
+    }
+
+    .input-wrapper:focus-within {
+      border-color: #b16e3a;
+      box-shadow: 0 0 0 3px rgba(177, 110, 58, 0.2);
+    }
+
+    .input-wrapper i {
+      color: #b16e3a;
+      font-size: 1.2rem;
+      margin-left: 8px;
+    }
+
+    .input-wrapper input {
+      border: none;
+      padding: 14px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      width: 100%;
+      outline: none;
+      background: transparent;
+      font-family: 'Tajawal', sans-serif;
+      color: #2b1b10;
+    }
+
+    .input-wrapper input::placeholder {
+      color: #bdaa9a;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    .note-input {
+      flex: 3 1 200px;
+      background: white;
+      border-radius: 60px;
+      padding: 4px 18px;
+      border: 1.5px solid #edd7c4;
+      display: flex;
+      align-items: center;
+    }
+
+    .note-input i {
+      color: #a47148;
+      margin-left: 8px;
+    }
+
+    .note-input input {
+      border: none;
+      padding: 14px 0;
+      width: 100%;
+      outline: none;
+      background: transparent;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    .btn-add {
+      background: #8b4e2a;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 18px #b37b5b66;
+      transition: all 0.2s;
+      border: 1px solid #a56135;
+      flex: 0 0 auto;
+    }
+
+    .btn-add:hover {
+      background: #6e3b1e;
+      transform: scale(1.01);
+      box-shadow: 0 10px 22px #8f5e3f99;
+    }
+
+    .btn-add i {
+      font-size: 1.2rem;
+    }
+
+    /* قائمة الدفعات */
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+      padding: 0 6px;
+    }
+
+    .history-header h3 {
+      font-weight: 700;
+      color: #4a2c1b;
+    }
+
+    .btn-reset {
+      background: none;
+      border: 1px solid #dbbca2;
+      color: #6d4f3a;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.15s;
+      font-size: 0.9rem;
+    }
+
+    .btn-reset:hover {
+      background: #f3ded1;
+      border-color: #b37b5b;
+    }
+
+    .payments-list {
+      list-style: none;
+      max-height: 340px;
+      overflow-y: auto;
+      padding-left: 4px;
+    }
+
+    .payment-item {
+      background: white;
+      border-radius: 30px;
+      padding: 14px 20px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      border: 1px solid #f5e1d0;
+      animation: fadeSlide 0.3s ease;
+    }
+
+    .payment-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment-amount {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #2e7d5e;
+    }
+
+    .payment-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 0.8rem;
+      color: #8f755e;
+      margin-top: 5px;
+    }
+
+    .payment-note {
+      background: #f9efe8;
+      padding: 3px 12px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: #b99e89;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 40px;
+      transition: 0.15s;
+    }
+
+    .delete-btn:hover {
+      background: #fee2d4;
+      color: #bc4e2e;
+    }
+
+    .empty-message {
+      text-align: center;
+      color: #a48c7a;
+      padding: 30px;
+      font-style: italic;
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* تذييل */
+    .footer-note {
+      margin-top: 18px;
+      text-align: center;
+      color: #b2927a;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+<div class="app-container">
+  <div class="app-header">
+    <i class="fas fa-hand-holding-heart"></i>
+    <h1>سـدّد دَين أمي <span>3000 درهم · بركة ووفاء</span></h1>
+  </div>
+
+  <!-- البطاقات العليا -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label"><i class="fas fa-coins" style="color:#b76e2e;"></i> المتبقي</div>
+      <div class="stat-number" id="remainingAmount">3000</div>
+      <div class="stat-sub">درهم</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label"><i class="fas fa-check-circle" style="color:#2e7d5e;"></i> المدفوع</div>
+      <div class="stat-number highlight-green" id="paidAmount">0</div>
+      <div class="stat-sub">درهم</div>
+    </div>
+  </div>
+
+  <!-- شريط التقدم -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span><i class="fas fa-chart-line"></i> تقدّم السداد</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- إضافة دفعة جديدة -->
+  <div class="add-payment">
+    <div class="form-title"><i class="fas fa-plus-circle"></i> سجّل دفعة جديدة</div>
+    <div class="input-group">
+      <div class="input-wrapper">
+        <i class="fas fa-money-bill-wave"></i>
+        <input type="number" id="paymentAmount" placeholder="المبلغ" min="1" step="10" value="100">
+      </div>
+      <div class="note-input">
+        <i class="fas fa-pen"></i>
+        <input type="text" id="paymentNote" placeholder="ملاحظة (اختياري)">
+      </div>
+      <button class="btn-add" id="addPaymentBtn"><i class="fas fa-hand-holding-usd"></i> سدّد الآن</button>
+    </div>
+  </div>
+
+  <!-- سجل الدفعات -->
+  <div class="history-header">
+    <h3><i class="fas fa-history"></i> سجل الدفعات</h3>
+    <button class="btn-reset" id="resetBtn" title="إعادة ضبط كل البيانات"><i class="fas fa-undo-alt"></i> إعادة ضبط</button>
+  </div>
+  <ul class="payments-list" id="paymentsList">
+    <!-- سيتم ملؤها من جافاسكريبت -->
+  </ul>
+  <div class="footer-note">
+    💝 كل درهم يعيد جزءاً من الجميل
+  </div>
+</div>
+
+<script>
+  (function(){
+    "use strict";
+
+    // الثوابت
+    const TOTAL_DEBT = 3000;
+    const STORAGE_KEY = 'MOM_DEBT_PAYMENTS_V1';
+
+    // عناصر DOM
+    const remainingEl = document.getElementById('remainingAmount');
+    const paidEl = document.getElementById('paidAmount');
+    const progressPercentEl = document.getElementById('progressPercent');
+    const progressFill = document.getElementById('progressFill');
+    const paymentsListEl = document.getElementById('paymentsList');
+    const amountInput = document.getElementById('paymentAmount');
+    const noteInput = document.getElementById('paymentNote');
+    const addBtn = document.getElementById('addPaymentBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    // مصفوفة الدفعات (كل كائن: id, amount, date, note)
+    let payments = [];
+
+    // --- تحميل البيانات من localStorage ---
+    function loadPayments() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          payments = JSON.parse(stored);
+          // تأكد من صحة التاريخ (تحويل النص إلى كائن تاريخ إن لزم)
+          payments = payments.filter(p => p && typeof p.amount === 'number' && p.amount > 0);
+        } catch (e) {
+          payments = [];
+        }
+      } else {
+        // لا توجد بيانات، ابدأ بمصفوفة فارغة
+        payments = [];
+      }
+    }
+
+    // --- حفظ المصفوفة إلى localStorage ---
+    function savePayments() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(payments));
+    }
+
+    // --- حساب الإجماليات ---
+    function calculateTotals() {
+      const totalPaid = payments.reduce((sum, p) => sum + p.amount, 0);
+      const remaining = Math.max(TOTAL_DEBT - totalPaid, 0);
+      return { totalPaid, remaining };
+    }
+
+    // --- تحديث واجهة المستخدم بالكامل ---
+    function updateUI() {
+      const { totalPaid, remaining } = calculateTotals();
+      
+      // تحديث الأرقام
+      remainingEl.textContent = remaining.toLocaleString('ar-MA');
+      paidEl.textContent = totalPaid.toLocaleString('ar-MA');
+      
+      // نسبة التقدم
+      const percent = Math.min((totalPaid / TOTAL_DEBT) * 100, 100);
+      progressPercentEl.textContent = percent.toFixed(1) + '%';
+      progressFill.style.width = percent + '%';
+      
+      // عرض قائمة الدفعات
+      renderPaymentsList();
+    }
+
+    // --- عرض قائمة الدفعات مع أيقونات الحذف ---
+    function renderPaymentsList() {
+      if (payments.length === 0) {
+        paymentsListEl.innerHTML = `<li class="empty-message"><i class="far fa-clock"></i> لم تُسجّل أي دفعة بعد. ابدأ بسداد مبلغ.</li>`;
+        return;
+      }
+
+      // ترتيب الدفعات من الأحدث للأقدم
+      const sorted = [...payments].sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      let html = '';
+      sorted.forEach(p => {
+        const dateObj = new Date(p.date);
+        const formattedDate = dateObj.toLocaleDateString('ar-MA', { 
+          year: 'numeric', month: 'short', day: 'numeric' 
+        });
+        const formattedTime = dateObj.toLocaleTimeString('ar-MA', { hour: '2-digit', minute: '2-digit' });
+        
+        const noteDisplay = p.note && p.note.trim() !== '' 
+          ? `<span class="payment-note"><i class="far fa-sticky-note"></i> ${escapeHtml(p.note)}</span>` 
+          : '';
+        
+        html += `
+          <li class="payment-item" data-id="${p.id}">
+            <div class="payment-info">
+              <span class="payment-amount">${p.amount.toLocaleString('ar-MA')} درهم</span>
+              <div class="payment-meta">
+                <span><i class="far fa-calendar-alt"></i> ${formattedDate}</span>
+                <span><i class="far fa-clock"></i> ${formattedTime}</span>
+                ${noteDisplay}
+              </div>
+            </div>
+            <button class="delete-btn" data-id="${p.id}" aria-label="حذف الدفعة"><i class="fas fa-trash-alt"></i></button>
+          </li>
+        `;
+      });
+      
+      paymentsListEl.innerHTML = html;
+      
+      // إضافة مستمعي الأحداث لأزرار الحذف
+      document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = btn.getAttribute('data-id');
+          deletePaymentById(id);
+        });
+      });
+    }
+
+    // دالة بسيطة لمنع XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // --- حذف دفعة عبر المعرف ---
+    function deletePaymentById(id) {
+      payments = payments.filter(p => p.id !== id);
+      savePayments();
+      updateUI();
+    }
+
+    // --- إضافة دفعة جديدة ---
+    function addNewPayment() {
+      // قراءة وتحقق من المبلغ
+      let amount = parseFloat(amountInput.value);
+      if (isNaN(amount) || amount <= 0) {
+        alert('الرجاء إدخال مبلغ صحيح أكبر من صفر.');
+        return;
+      }
+      
+      // تقريب إلى أقرب درهم (يمكن إزالة إذا أردت الكسور)
+      amount = Math.round(amount);
+      if (amount <= 0) {
+        alert('المبلغ يجب أن يكون 1 درهم على الأقل.');
+        return;
+      }
+      
+      const note = noteInput.value.trim();
+      
+      // تحقق من أن المبلغ المدفوع لا يتجاوز المتبقي (اختياري لكن مفيد)
+      const { remaining } = calculateTotals();
+      if (amount > remaining) {
+        const تأكيد = confirm(`المبلغ المتبقي هو ${remaining} درهم. هل تريد إضافة ${amount} درهم؟ (سيتم اعتبار الزيادة كدفعة زائدة)`);
+        if (!تأكيد) return;
+      }
+      
+      // إنشاء دفعة جديدة
+      const newPayment = {
+        id: Date.now() + '-' + Math.random().toString(36).substr(2, 6),
+        amount: amount,
+        date: new Date().toISOString(),
+        note: note,
+      };
+      
+      payments.push(newPayment);
+      savePayments();
+      
+      // مسح الحقول (نترك المبلغ 100 افتراضيًا، نمسح الملاحظة)
+      amountInput.value = '100';
+      noteInput.value = '';
+      
+      updateUI();
+      
+      // تمرير تلقائي إلى آخر دفعة (الأحدث)
+      setTimeout(() => {
+        paymentsListEl.scrollTop = 0; // لأن الأحدث في الأعلى
+      }, 50);
+    }
+
+    // --- إعادة ضبط كامل البيانات ---
+    function resetAllData() {
+      if (payments.length === 0) {
+        // إذا فارغة فقط نقوم بتحديث الواجهة
+        updateUI();
+        return;
+      }
+      const confirmReset = confirm('هل أنت متأكد من مسح جميع الدفعات المسجلة؟ لا يمكن التراجع.');
+      if (!confirmReset) return;
+      
+      payments = [];
+      savePayments();
+      updateUI();
+      amountInput.value = '100';
+      noteInput.value = '';
+    }
+
+    // --- تهيئة التطبيق ---
+    function init() {
+      loadPayments();
+      updateUI();
+      
+      // مستمعو الأحداث
+      addBtn.addEventListener('click', addNewPayment);
+      
+      // إمكانية إضافة عبر زر Enter في حقل المبلغ
+      amountInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addNewPayment();
+        }
+      });
+      noteInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addNewPayment();
+        }
+      });
+      
+      resetBtn.addEventListener('click', resetAllData);
+      
+      // ضبط قيمة افتراضية أولية
+      if (amountInput.value === '' || amountInput.value === '0') {
+        amountInput.value = '100';
+      }
+    }
+
+    // ابدأ التطبيق
+    init();
+  })();
+</script>
+</body>
+</html>
