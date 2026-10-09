@@ -32,7 +32,7 @@
   <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
   <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
   <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol><symbol id="i-face" viewBox="0 0 24 24"><path d="M4 8V6a4 4 0 0 1 4-4h2M16 2h2a4 4 0 0 1 4 4v2M20 16v2a4 4 0 0 1-4 4h-2M8 22H6a4 4 0 0 1-4-4v-2"/><circle cx="9" cy="10" r="1.2"/><circle cx="15" cy="10" r="1.2"/><path d="M9 15.5c1.2 1.2 4.8 1.2 6 0"/></symbol>
   <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
   <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v4c0 1.7 2.7 3 6 3s6-1.3 6-3V7M3 11v4c0 1.7 2.7 3 6 3 1.2 0 2.3-.2 3.2-.5"/><path d="M15 11c3.3 0 6 1.3 6 3s-2.7 3-6 3c-1 0-2-.1-2.8-.4M12 17v2c0 1.7 2.7 3 6 3"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
@@ -43,9 +43,15 @@
 <div id="lockScreen" class="lock-screen hidden" role="dialog" aria-modal="true">
   <div class="lock-card glass">
     <div class="brand-mark"><svg><use href="#i-pulse"/></svg></div>
-    <h1>مرحباً بعودتك</h1><p>أدخل رمز الدخول إلى توازن</p>
-    <div id="pinDots" class="pin-dots" aria-label="رمز من أربع خانات"><b></b><b></b><b></b><b></b></div>
-    <div id="pinPad" class="pin-pad"></div>
+    <h1>مرحباً بعودتك</h1><p id="lockSubtitle">أدخل رمز الدخول إلى توازن</p>
+    <div id="bioBlock" class="hidden">
+      <button id="bioButton" class="bio-button" type="button"><svg><use href="#i-face"/></svg><span>الدخول ببصمة الوجه</span></button>
+      <button id="usePinLink" class="text-button" type="button">استخدام رمز PIN بدلاً من ذلك</button>
+    </div>
+    <div id="pinBlock">
+      <div id="pinDots" class="pin-dots" aria-label="رمز من أربع خانات"><b></b><b></b><b></b><b></b></div>
+      <div id="pinPad" class="pin-pad"></div>
+    </div>
     <p id="lockMessage" class="form-note" aria-live="polite"></p>
   </div>
 </div>
