@@ -74,7 +74,7 @@
     </section>
 
     <section class="page" data-page="budget">
-      <div class="month-strip glass"><button id="prevMonth" class="icon-button"><svg class="rtl-flip"><use href="#i-chevron"/></svg></button><button id="monthPickerBtn" class="month-label"><span id="budgetMonth"></span><small>اضغط لاختيار شهر</small></button><button id="nextMonth" class="icon-button"><svg><use href="#i-chevron"/></svg></button><input type="month" id="monthInput" hidden></div>
+      <div class="month-strip glass"><button id="prevMonth" class="icon-button"><svg><use href="#i-chevron"/></svg></button><button id="monthPickerBtn" class="month-label"><span id="budgetMonth"></span><small>اضغط لاختيار شهر</small></button><button id="nextMonth" class="icon-button"><svg class="rtl-flip"><use href="#i-chevron"/></svg></button></div><input type="month" id="monthInput" class="vh-month" aria-hidden="true" tabindex="-1">
       <div class="balance-card glass"><span class="eyebrow">الرصيد المتبقي</span><h2 id="budgetBalance">0 د.م</h2><div class="budget-stats"><span><small>الدخل</small><b id="budgetIncome">0</b></span><span><small>المصروف</small><b id="budgetSpent">0</b></span><span><small>الادخار</small><b id="budgetSaved">0</b></span></div><div class="progress"><i id="budgetProgress"></i></div><button class="text-button" id="editIncomeBtn"><svg><use href="#i-edit"/></svg> تعديل الدخل واسم الميزانية</button></div>
       <div class="section-head"><div><span class="eyebrow">التقسيمات</span><h2>فئات الميزانية</h2></div><button class="add-button" id="addCategoryBtn"><svg><use href="#i-plus"/></svg> إضافة</button></div>
       <div id="categoryList" class="category-grid"></div>
@@ -88,7 +88,7 @@
       <div id="mainHabitCard" class="recovery-card glass"></div>
       <div class="section-head"><div><span class="eyebrow">اليوم</span><h2>عاداتي</h2></div><button class="add-button" id="addHabitBtn"><svg><use href="#i-plus"/></svg> عادة</button></div>
       <div id="habitList" class="habit-list"></div>
-      <div class="calendar-card glass"><div class="calendar-head"><button id="calPrev" class="icon-button"><svg class="rtl-flip"><use href="#i-chevron"/></svg></button><h3 id="calTitle"></h3><button id="calNext" class="icon-button"><svg><use href="#i-chevron"/></svg></button></div><div class="week-row"><span>ح</span><span>ن</span><span>ث</span><span>ر</span><span>خ</span><span>ج</span><span>س</span></div><div id="habitCalendar" class="calendar-grid"></div><div class="legend"><span><i class="done"></i> يوم ناجح</span><span><i class="missed"></i> تعثر</span></div></div>
+      <div class="calendar-card glass"><div class="calendar-head"><button id="calPrev" class="icon-button"><svg><use href="#i-chevron"/></svg></button><h3 id="calTitle"></h3><button id="calNext" class="icon-button"><svg class="rtl-flip"><use href="#i-chevron"/></svg></button></div><div class="week-row"><span>ح</span><span>ن</span><span>ث</span><span>ر</span><span>خ</span><span>ج</span><span>س</span></div><div id="habitCalendar" class="calendar-grid"></div><div class="legend"><span><i class="done"></i> يوم ناجح</span><span><i class="missed"></i> تعثر</span></div></div>
     </section>
 
     <section class="page" data-page="pushups">
