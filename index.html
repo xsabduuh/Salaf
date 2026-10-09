@@ -1,683 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>سـدّد دَين أمي | 3000 درهم</title>
-  <!-- خط عربي أنيق -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <!-- Font Awesome للأيقونات -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background: linear-gradient(145deg, #f9f7f3 0%, #fff4e6 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      direction: rtl;
-    }
-
-    .app-container {
-      max-width: 700px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 48px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(232, 196, 136, 0.1);
-      padding: 24px 20px 30px;
-      border: 1px solid rgba(255, 215, 170, 0.5);
-      transition: all 0.2s ease;
-    }
-
-    /* رأس التطبيق */
-    .app-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .app-header i {
-      font-size: 2.2rem;
-      color: #b76e2e;
-      background: #fbe9d2;
-      padding: 12px;
-      border-radius: 30px;
-      box-shadow: 0 6px 10px rgba(182, 110, 46, 0.1);
-    }
-
-    .app-header h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #4a2c1b;
-      letter-spacing: -0.5px;
-    }
-
-    .app-header h1 span {
-      font-weight: 500;
-      font-size: 1rem;
-      color: #a47148;
-      display: block;
-      margin-top: 4px;
-    }
-
-    /* بطاقة المبلغ الكلي والمتبقي */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .stat-card {
-      background: white;
-      border-radius: 28px;
-      padding: 18px 12px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-      border: 1px solid #ffede1;
-      transition: transform 0.2s;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .stat-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #7b5a47;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: #3f2a1c;
-      line-height: 1.2;
-    }
-
-    .stat-sub {
-      color: #9b7b64;
-      font-size: 0.9rem;
-      margin-top: 4px;
-    }
-
-    .highlight-green {
-      color: #2e7d5e;
-    }
-
-    .highlight-amber {
-      color: #b45330;
-    }
-
-    /* شريط التقدم */
-    .progress-section {
-      background: #f0e3d6;
-      border-radius: 40px;
-      padding: 16px 18px;
-      margin-bottom: 28px;
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #4e3626;
-    }
-
-    .progress-bar-container {
-      height: 18px;
-      background: #ddcbbc;
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #c28b5c, #b16e3a);
-      border-radius: 30px;
-      transition: width 0.5s cubic-bezier(0.2, 0.9, 0.4, 1);
-      box-shadow: 0 0 8px #d49c6c;
-    }
-
-    /* نموذج الإضافة */
-    .add-payment {
-      background: #ffffffd6;
-      backdrop-filter: blur(4px);
-      border-radius: 36px;
-      padding: 18px 18px 22px;
-      margin-bottom: 24px;
-      border: 1px solid #ffdbbf;
-    }
-
-    .form-title {
-      font-weight: 700;
-      color: #3e2a1b;
-      margin-bottom: 16px;
-      font-size: 1.2rem;
-    }
-
-    .input-group {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .input-wrapper {
-      flex: 2 1 180px;
-      display: flex;
-      align-items: center;
-      background: white;
-      border-radius: 60px;
-      padding: 4px 16px;
-      border: 1.5px solid #edd7c4;
-      transition: border 0.15s;
-    }
-
-    .input-wrapper:focus-within {
-      border-color: #b16e3a;
-      box-shadow: 0 0 0 3px rgba(177, 110, 58, 0.2);
-    }
-
-    .input-wrapper i {
-      color: #b16e3a;
-      font-size: 1.2rem;
-      margin-left: 8px;
-    }
-
-    .input-wrapper input {
-      border: none;
-      padding: 14px 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-      width: 100%;
-      outline: none;
-      background: transparent;
-      font-family: 'Tajawal', sans-serif;
-      color: #2b1b10;
-    }
-
-    .input-wrapper input::placeholder {
-      color: #bdaa9a;
-      font-weight: 400;
-      font-size: 1rem;
-    }
-
-    .note-input {
-      flex: 3 1 200px;
-      background: white;
-      border-radius: 60px;
-      padding: 4px 18px;
-      border: 1.5px solid #edd7c4;
-      display: flex;
-      align-items: center;
-    }
-
-    .note-input i {
-      color: #a47148;
-      margin-left: 8px;
-    }
-
-    .note-input input {
-      border: none;
-      padding: 14px 0;
-      width: 100%;
-      outline: none;
-      background: transparent;
-      font-family: 'Tajawal', sans-serif;
-    }
-
-    .btn-add {
-      background: #8b4e2a;
-      border: none;
-      color: white;
-      font-weight: 700;
-      padding: 14px 28px;
-      border-radius: 60px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 8px 18px #b37b5b66;
-      transition: all 0.2s;
-      border: 1px solid #a56135;
-      flex: 0 0 auto;
-    }
-
-    .btn-add:hover {
-      background: #6e3b1e;
-      transform: scale(1.01);
-      box-shadow: 0 10px 22px #8f5e3f99;
-    }
-
-    .btn-add i {
-      font-size: 1.2rem;
-    }
-
-    /* قائمة الدفعات */
-    .history-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 12px;
-      padding: 0 6px;
-    }
-
-    .history-header h3 {
-      font-weight: 700;
-      color: #4a2c1b;
-    }
-
-    .btn-reset {
-      background: none;
-      border: 1px solid #dbbca2;
-      color: #6d4f3a;
-      padding: 6px 14px;
-      border-radius: 50px;
-      font-family: 'Tajawal', sans-serif;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.15s;
-      font-size: 0.9rem;
-    }
-
-    .btn-reset:hover {
-      background: #f3ded1;
-      border-color: #b37b5b;
-    }
-
-    .payments-list {
-      list-style: none;
-      max-height: 340px;
-      overflow-y: auto;
-      padding-left: 4px;
-    }
-
-    .payment-item {
-      background: white;
-      border-radius: 30px;
-      padding: 14px 20px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
-      border: 1px solid #f5e1d0;
-      animation: fadeSlide 0.3s ease;
-    }
-
-    .payment-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .payment-amount {
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: #2e7d5e;
-    }
-
-    .payment-meta {
-      display: flex;
-      gap: 15px;
-      font-size: 0.8rem;
-      color: #8f755e;
-      margin-top: 5px;
-    }
-
-    .payment-note {
-      background: #f9efe8;
-      padding: 3px 12px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-    }
-
-    .delete-btn {
-      background: none;
-      border: none;
-      color: #b99e89;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 8px 10px;
-      border-radius: 40px;
-      transition: 0.15s;
-    }
-
-    .delete-btn:hover {
-      background: #fee2d4;
-      color: #bc4e2e;
-    }
-
-    .empty-message {
-      text-align: center;
-      color: #a48c7a;
-      padding: 30px;
-      font-style: italic;
-    }
-
-    @keyframes fadeSlide {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    /* تذييل */
-    .footer-note {
-      margin-top: 18px;
-      text-align: center;
-      color: #b2927a;
-      font-size: 0.85rem;
-    }
-  </style>
-</head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><title>صفاء — متتبع العادات</title>
+<style>
+:root{--bg:#06101e;--panel:rgba(255,255,255,.09);--line:rgba(255,255,255,.15);--text:#f7fbff;--muted:#a9b7c9;--cyan:#6ee7f9;--blue:#5b8cff;--green:#6ee7b7;--red:#fb7185;--gold:#f9d56e;--shadow:0 24px 80px rgba(0,0,0,.38)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Tahoma,sans-serif;background:radial-gradient(circle at 10% 0%,#17365c 0,transparent 38%),radial-gradient(circle at 90% 15%,#28327b 0,transparent 35%),linear-gradient(160deg,#030712,#071526 48%,#080b1d);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;border-radius:50%;filter:blur(2px);opacity:.55;z-index:-1;animation:float 10s ease-in-out infinite alternate}body:before{width:230px;height:230px;background:#0ea5e9;top:16%;right:-120px}body:after{width:280px;height:280px;background:#4338ca;bottom:5%;left:-150px;animation-delay:-4s}@keyframes float{to{transform:translate3d(20px,-35px,0) scale(1.12)}}
+button,input,select{font:inherit}.app{width:min(100%,470px);margin:auto;min-height:100vh;padding:calc(18px + env(safe-area-inset-top)) 16px calc(105px + env(safe-area-inset-bottom))}.glass{background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.055));border:1px solid var(--line);box-shadow:var(--shadow),inset 0 1px rgba(255,255,255,.15);backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%);border-radius:28px}
+header{display:flex;align-items:center;justify-content:space-between;margin:4px 4px 22px}.brand{display:flex;gap:11px;align-items:center}.logo{width:43px;height:43px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 10px 30px #249ceb55;color:#04101c;font-size:22px}.brand h1{font-size:20px;margin:0}.brand small{color:var(--muted)}.icon-btn{border:0;color:#fff;background:var(--panel);border:1px solid var(--line);width:43px;height:43px;border-radius:50%;cursor:pointer}
+.hero{padding:24px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:var(--cyan);filter:blur(65px);opacity:.16;left:-30px;top:-35px}.eyebrow{color:#c9d8e9;font-size:13px;display:flex;gap:7px;align-items:center}.pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px #6ee7b722}.streak{font-size:76px;line-height:.95;font-weight:800;letter-spacing:-5px;margin:20px 0 4px;background:linear-gradient(180deg,#fff,#9feaff);-webkit-background-clip:text;color:transparent}.day-label{color:var(--muted)}.quote{margin:20px 0 0;padding-top:17px;border-top:1px solid var(--line);font-size:14px;color:#d9e7f5}.hero-actions{display:flex;gap:10px;margin-top:20px}.btn{border:0;border-radius:16px;padding:13px 16px;cursor:pointer;font-weight:700;transition:.2s}.btn:active{transform:scale(.97)}.btn-primary{color:#04101c;background:linear-gradient(135deg,var(--cyan),#a5f3fc);flex:1;box-shadow:0 10px 25px #67e8f933}.btn-soft{color:#fff;background:var(--panel);border:1px solid var(--line)}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:26px 4px 12px}.section-title h2{font-size:17px;margin:0}.section-title button{border:0;background:none;color:var(--cyan);cursor:pointer}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{padding:16px 10px;text-align:center;border-radius:21px}.stat b{font-size:23px;display:block}.stat span{font-size:11px;color:var(--muted)}.calendar{padding:18px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.dow{text-align:center;color:var(--muted);font-size:10px}.cell{aspect-ratio:1;border-radius:10px;display:grid;place-items:center;font-size:11px;color:#7f91a8;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}.cell.good{background:linear-gradient(135deg,#2dd4bf,#60a5fa);color:#03151c;font-weight:800;box-shadow:0 5px 15px #2dd4bf33}.cell.bad{background:#fb718544;color:#ffdbe1;border-color:#fb718577}.cell.today{outline:2px solid #fff;outline-offset:2px}.cell.blank{opacity:0}.legend{display:flex;gap:14px;margin-top:13px;font-size:10px;color:var(--muted)}.dot{width:8px;height:8px;border-radius:3px;display:inline-block;margin-left:4px}.dot.g{background:var(--green)}.dot.r{background:var(--red)}
+.habits{display:grid;gap:10px}.habit{padding:15px;display:flex;align-items:center;gap:13px;border-radius:22px}.habit-icon{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:21px;background:linear-gradient(135deg,#ffffff24,#ffffff08);border:1px solid var(--line)}.habit-info{flex:1}.habit-info b{display:block;margin-bottom:4px}.habit-info small{color:var(--muted)}.check{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:#ffffff0b;color:#fff;cursor:pointer;font-size:17px}.check.done{color:#04140f;background:var(--green);border-color:transparent}.progress{height:5px;background:#ffffff12;border-radius:10px;margin-top:8px;overflow:hidden}.progress i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.nav{position:fixed;z-index:20;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(calc(100% - 28px),440px);padding:9px;display:grid;grid-template-columns:repeat(3,1fr);border-radius:24px}.nav button{border:0;background:transparent;color:var(--muted);padding:8px;border-radius:16px;cursor:pointer;font-size:11px}.nav button span{font-size:20px;display:block;margin-bottom:2px}.nav button.active{color:#fff;background:#ffffff12}.screen{display:none}.screen.active{display:block;animation:show .35s ease}@keyframes show{from{opacity:0;transform:translateY(8px)}}
+.modal{position:fixed;inset:0;z-index:50;background:#020713aa;display:none;align-items:flex-end;justify-content:center;padding:15px}.modal.open{display:flex}.sheet{width:min(100%,470px);padding:22px;border-radius:30px;animation:up .3s ease}@keyframes up{from{transform:translateY(40px);opacity:0}}.sheet h3{margin:0 0 6px}.sheet p{color:var(--muted);font-size:13px;line-height:1.7}.field{margin:14px 0}.field label{display:block;font-size:12px;color:var(--muted);margin:0 3px 7px}.field input,.field select{width:100%;border-radius:15px;border:1px solid var(--line);background:#071221;color:#fff;padding:13px;outline:none}.row{display:flex;gap:9px}.row>*{flex:1}.danger{color:#fecdd3;background:#fb718522;border:1px solid #fb718555}.full{width:100%}.toast{position:fixed;z-index:90;top:calc(16px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-120px);padding:12px 18px;border-radius:16px;background:#e9fbff;color:#06101e;font-weight:700;box-shadow:var(--shadow);transition:.35s}.toast.show{transform:translate(-50%,0)}
+.settings-card{padding:8px 18px}.setting{padding:15px 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.setting:last-child{border:0}.setting small{display:block;color:var(--muted);margin-top:4px}.about{padding:20px;line-height:1.8;color:#dbe8f5;font-size:13px}.empty{text-align:center;padding:26px;color:var(--muted)}.confetti{position:fixed;z-index:100;width:8px;height:14px;top:-20px;animation:fall 1.8s linear forwards}@keyframes fall{to{transform:translate(var(--x),105vh) rotate(700deg)}}
+.header-actions{display:flex;gap:8px}.lock-screen{position:fixed;inset:0;z-index:300;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 15% 10%,#17365c 0,transparent 42%),radial-gradient(circle at 90% 90%,#28327b 0,transparent 40%),linear-gradient(160deg,#030712,#071526 48%,#080b1d)}.lock-screen.hidden{display:none}.lock-card{width:min(100%,390px);padding:30px 22px;text-align:center}.lock-logo{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border-radius:25px;background:linear-gradient(135deg,var(--cyan),var(--blue));box-shadow:0 18px 45px #249ceb55;color:#04101c;font-size:36px}.lock-card h2{margin:0 0 8px;font-size:25px}.lock-card p{margin:0 auto 22px;color:var(--muted);font-size:13px;line-height:1.7}.password-wrap{position:relative;margin-bottom:12px}.password-wrap input{width:100%;padding:15px 50px 15px 16px;text-align:center;letter-spacing:3px;border-radius:17px;border:1px solid var(--line);background:#071221;color:#fff;outline:none}.password-wrap input:focus{border-color:var(--cyan);box-shadow:0 0 0 4px #6ee7f91b}.show-password{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--muted);width:38px;height:38px;cursor:pointer}.lock-error{min-height:20px;color:#fecdd3;font-size:12px;margin-top:10px}.shake{animation:shake .35s ease}@keyframes shake{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-4px)}}
+@media(min-width:700px){.app{padding-top:32px}.nav{bottom:24px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style></head>
 <body>
-<div class="app-container">
-  <div class="app-header">
-    <i class="fas fa-hand-holding-heart"></i>
-    <h1>سـدّد دَين أمي <span>3000 درهم · بركة ووفاء</span></h1>
-  </div>
-
-  <!-- البطاقات العليا -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-label"><i class="fas fa-coins" style="color:#b76e2e;"></i> المتبقي</div>
-      <div class="stat-number" id="remainingAmount">3000</div>
-      <div class="stat-sub">درهم</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label"><i class="fas fa-check-circle" style="color:#2e7d5e;"></i> المدفوع</div>
-      <div class="stat-number highlight-green" id="paidAmount">0</div>
-      <div class="stat-sub">درهم</div>
-    </div>
-  </div>
-
-  <!-- شريط التقدم -->
-  <div class="progress-section">
-    <div class="progress-header">
-      <span><i class="fas fa-chart-line"></i> تقدّم السداد</span>
-      <span id="progressPercent">0%</span>
-    </div>
-    <div class="progress-bar-container">
-      <div class="progress-fill" id="progressFill" style="width:0%"></div>
-    </div>
-  </div>
-
-  <!-- إضافة دفعة جديدة -->
-  <div class="add-payment">
-    <div class="form-title"><i class="fas fa-plus-circle"></i> سجّل دفعة جديدة</div>
-    <div class="input-group">
-      <div class="input-wrapper">
-        <i class="fas fa-money-bill-wave"></i>
-        <input type="number" id="paymentAmount" placeholder="المبلغ" min="1" step="10" value="100">
-      </div>
-      <div class="note-input">
-        <i class="fas fa-pen"></i>
-        <input type="text" id="paymentNote" placeholder="ملاحظة (اختياري)">
-      </div>
-      <button class="btn-add" id="addPaymentBtn"><i class="fas fa-hand-holding-usd"></i> سدّد الآن</button>
-    </div>
-  </div>
-
-  <!-- سجل الدفعات -->
-  <div class="history-header">
-    <h3><i class="fas fa-history"></i> سجل الدفعات</h3>
-    <button class="btn-reset" id="resetBtn" title="إعادة ضبط كل البيانات"><i class="fas fa-undo-alt"></i> إعادة ضبط</button>
-  </div>
-  <ul class="payments-list" id="paymentsList">
-    <!-- سيتم ملؤها من جافاسكريبت -->
-  </ul>
-  <div class="footer-note">
-    💝 كل درهم يعيد جزءاً من الجميل
-  </div>
-</div>
-
+<section class="lock-screen" id="lockScreen" aria-labelledby="lockTitle"><div class="lock-card glass" id="lockCard"><div class="lock-logo">✦</div><h2 id="lockTitle">صفاء</h2><p>مساحتك الخاصة محمية. أدخل كلمة السر لفتح التطبيق.</p><form onsubmit="unlockApp(event)"><div class="password-wrap"><input id="passwordInput" type="password" inputmode="text" autocomplete="current-password" placeholder="كلمة السر" aria-label="كلمة السر"><button class="show-password" type="button" onclick="togglePassword()" aria-label="إظهار أو إخفاء كلمة السر">◉</button></div><button class="btn btn-primary full" type="submit">فتح التطبيق</button><div class="lock-error" id="lockError" role="alert"></div></form></div></section>
+<main class="app">
+<header><div class="brand"><div class="logo">✦</div><div><h1>صفاء</h1><small id="todayText"></small></div></div><div class="header-actions"><button class="icon-btn" onclick="lockApp()" aria-label="قفل التطبيق">⌑</button><button class="icon-btn" onclick="openModal('settingsModal')" aria-label="الإعدادات">⚙</button></div></header>
+<section id="home" class="screen active">
+<div class="hero glass"><div class="eyebrow"><i class="pulse"></i> التعافي من الإباحية والعادة السرية</div><div class="streak" id="streak">0</div><div class="day-label" id="streakLabel">أيام من التقدّم</div><div class="quote" id="quote">كل يوم تختاره لنفسك هو خطوة حقيقية للأمام.</div><div class="hero-actions"><button class="btn btn-primary" onclick="markClean()">✓ أكملت اليوم</button><button class="btn btn-soft" onclick="openModal('resetModal')">بداية جديدة</button></div></div>
+<div class="section-title"><h2>نظرة سريعة</h2></div><div class="stats"><div class="stat glass"><b id="best">0</b><span>أفضل سلسلة</span></div><div class="stat glass"><b id="cleanTotal">0</b><span>أيام ناجحة</span></div><div class="stat glass"><b id="rate">0%</b><span>هذا الشهر</span></div></div>
+<div class="section-title"><h2>آخر 35 يوماً</h2><button onclick="showScreen('calendar')">عرض الكل</button></div><div class="calendar glass"><div class="calendar-grid" id="miniCalendar"></div><div class="legend"><span><i class="dot g"></i>مكتمل</span><span><i class="dot r"></i>بداية جديدة</span></div></div>
+<div class="section-title"><h2>عاداتي</h2><button onclick="openHabitModal()">＋ إضافة</button></div><div id="habitList" class="habits"></div>
+</section>
+<section id="calendar" class="screen"><div class="section-title"><h2>سجل التقدّم</h2><button onclick="changeMonth(0)">هذا الشهر</button></div><div class="calendar glass"><div class="calendar-head"><button class="icon-btn" onclick="changeMonth(1)">‹</button><b id="monthTitle"></b><button class="icon-btn" onclick="changeMonth(-1)">›</button></div><div class="calendar-grid" id="monthCalendar"></div></div><div class="about glass" style="margin-top:14px"><b>تذكّر</b><br>السجل وسيلة للفهم، وليس للحكم عليك. البداية الجديدة لا تمحو ما تعلمته في الأيام السابقة.</div></section>
+<section id="settings" class="screen"><div class="section-title"><h2>البيانات والخصوصية</h2></div><div class="settings-card glass"><div class="setting"><div><b>قفل التطبيق</b><small>اطلب كلمة السر عند الفتح من جديد</small></div><button class="btn btn-soft" onclick="lockApp()">قفل الآن</button></div><div class="setting"><div><b>تصدير نسخة</b><small>ملف JSON يحتفظ بسجلك</small></div><button class="btn btn-soft" onclick="exportData()">تصدير</button></div><div class="setting"><div><b>استيراد نسخة</b><small>استعد بياناتك من ملف سابق</small></div><label class="btn btn-soft">استيراد<input type="file" accept="application/json" onchange="importData(this)" hidden></label></div><div class="setting"><div><b>حذف كل البيانات</b><small>لا يمكن التراجع عن هذا الإجراء</small></div><button class="btn danger" onclick="eraseAll()">حذف</button></div></div><div class="about glass" style="margin-top:14px"><b>خصوصيتك أولاً</b><br>تُحفظ بياناتك داخل متصفحك فقط، ولا تُرسل إلى أي خادم. إذا مسحت بيانات المتصفح قد تفقد سجلك، لذلك استعمل التصدير للنسخ الاحتياطي.</div></section>
+</main>
+<nav class="nav glass"><button class="active" data-screen="home" onclick="showScreen('home')"><span>⌂</span>الرئيسية</button><button data-screen="calendar" onclick="showScreen('calendar')"><span>▦</span>السجل</button><button data-screen="settings" onclick="showScreen('settings')"><span>⚙</span>الإعدادات</button></nav>
+<div class="modal" id="setupModal"><div class="sheet glass"><h3>ابدأ رحلتك ✨</h3><p>اختر تاريخ بداية التوقف. يمكنك تعديله لاحقاً، وكل بياناتك ستبقى على جهازك.</p><div class="field"><label>تاريخ البداية</label><input type="date" id="setupDate"></div><button class="btn btn-primary full" onclick="finishSetup()">ابدأ الآن</button></div></div>
+<div class="modal" id="resetModal" onclick="backdrop(event)"><div class="sheet glass"><h3>بداية جديدة</h3><p>التعثّر لا يلغي تقدّمك. سنحفظ أفضل سلسلة ونبدأ العد من التاريخ الذي تختاره.</p><div class="field"><label>تاريخ البداية الجديدة</label><input type="date" id="resetDate"></div><div class="row"><button class="btn danger" onclick="confirmReset()">تأكيد البداية</button><button class="btn btn-soft" onclick="closeModal('resetModal')">إلغاء</button></div></div></div>
+<div class="modal" id="habitModal" onclick="backdrop(event)"><div class="sheet glass"><h3 id="habitModalTitle">عادة جديدة</h3><p>أضف عادة إيجابية صغيرة تدعم رحلتك.</p><input type="hidden" id="habitId"><div class="field"><label>اسم العادة</label><input id="habitName" maxlength="35" placeholder="مثال: الرياضة أو القراءة"></div><div class="row"><div class="field"><label>الرمز</label><select id="habitIcon"><option>💧</option><option>🏃</option><option>📚</option><option>🧘</option><option>😴</option><option>🥗</option><option>🎯</option><option>✨</option></select></div><div class="field"><label>الهدف الأسبوعي</label><select id="habitTarget"><option value="7">يومياً</option><option value="5">5 أيام</option><option value="3">3 أيام</option><option value="1">مرة</option></select></div></div><div class="row"><button class="btn btn-primary" onclick="saveHabit()">حفظ</button><button class="btn btn-soft" onclick="closeModal('habitModal')">إلغاء</button></div><button id="deleteHabit" class="btn danger full" style="display:none;margin-top:10px" onclick="deleteHabit()">حذف العادة</button></div></div>
+<div class="modal" id="settingsModal" onclick="backdrop(event)"><div class="sheet glass"><h3>إعداد الرحلة</h3><p>عدّل تاريخ بدايتك يدوياً إذا كان العد غير صحيح.</p><div class="field"><label>تاريخ بداية السلسلة الحالية</label><input type="date" id="editStart"></div><div class="row"><button class="btn btn-primary" onclick="saveStartDate()">حفظ</button><button class="btn btn-soft" onclick="closeModal('settingsModal')">إلغاء</button></div></div></div>
+<div class="toast" id="toast"></div>
 <script>
-  (function(){
-    "use strict";
-
-    // الثوابت
-    const TOTAL_DEBT = 3000;
-    const STORAGE_KEY = 'MOM_DEBT_PAYMENTS_V1';
-
-    // عناصر DOM
-    const remainingEl = document.getElementById('remainingAmount');
-    const paidEl = document.getElementById('paidAmount');
-    const progressPercentEl = document.getElementById('progressPercent');
-    const progressFill = document.getElementById('progressFill');
-    const paymentsListEl = document.getElementById('paymentsList');
-    const amountInput = document.getElementById('paymentAmount');
-    const noteInput = document.getElementById('paymentNote');
-    const addBtn = document.getElementById('addPaymentBtn');
-    const resetBtn = document.getElementById('resetBtn');
-
-    // مصفوفة الدفعات (كل كائن: id, amount, date, note)
-    let payments = [];
-
-    // --- تحميل البيانات من localStorage ---
-    function loadPayments() {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        try {
-          payments = JSON.parse(stored);
-          // تأكد من صحة التاريخ (تحويل النص إلى كائن تاريخ إن لزم)
-          payments = payments.filter(p => p && typeof p.amount === 'number' && p.amount > 0);
-        } catch (e) {
-          payments = [];
-        }
-      } else {
-        // لا توجد بيانات، ابدأ بمصفوفة فارغة
-        payments = [];
-      }
-    }
-
-    // --- حفظ المصفوفة إلى localStorage ---
-    function savePayments() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(payments));
-    }
-
-    // --- حساب الإجماليات ---
-    function calculateTotals() {
-      const totalPaid = payments.reduce((sum, p) => sum + p.amount, 0);
-      const remaining = Math.max(TOTAL_DEBT - totalPaid, 0);
-      return { totalPaid, remaining };
-    }
-
-    // --- تحديث واجهة المستخدم بالكامل ---
-    function updateUI() {
-      const { totalPaid, remaining } = calculateTotals();
-      
-      // تحديث الأرقام
-      remainingEl.textContent = remaining.toLocaleString('ar-MA');
-      paidEl.textContent = totalPaid.toLocaleString('ar-MA');
-      
-      // نسبة التقدم
-      const percent = Math.min((totalPaid / TOTAL_DEBT) * 100, 100);
-      progressPercentEl.textContent = percent.toFixed(1) + '%';
-      progressFill.style.width = percent + '%';
-      
-      // عرض قائمة الدفعات
-      renderPaymentsList();
-    }
-
-    // --- عرض قائمة الدفعات مع أيقونات الحذف ---
-    function renderPaymentsList() {
-      if (payments.length === 0) {
-        paymentsListEl.innerHTML = `<li class="empty-message"><i class="far fa-clock"></i> لم تُسجّل أي دفعة بعد. ابدأ بسداد مبلغ.</li>`;
-        return;
-      }
-
-      // ترتيب الدفعات من الأحدث للأقدم
-      const sorted = [...payments].sort((a, b) => new Date(b.date) - new Date(a.date));
-      
-      let html = '';
-      sorted.forEach(p => {
-        const dateObj = new Date(p.date);
-        const formattedDate = dateObj.toLocaleDateString('ar-MA', { 
-          year: 'numeric', month: 'short', day: 'numeric' 
-        });
-        const formattedTime = dateObj.toLocaleTimeString('ar-MA', { hour: '2-digit', minute: '2-digit' });
-        
-        const noteDisplay = p.note && p.note.trim() !== '' 
-          ? `<span class="payment-note"><i class="far fa-sticky-note"></i> ${escapeHtml(p.note)}</span>` 
-          : '';
-        
-        html += `
-          <li class="payment-item" data-id="${p.id}">
-            <div class="payment-info">
-              <span class="payment-amount">${p.amount.toLocaleString('ar-MA')} درهم</span>
-              <div class="payment-meta">
-                <span><i class="far fa-calendar-alt"></i> ${formattedDate}</span>
-                <span><i class="far fa-clock"></i> ${formattedTime}</span>
-                ${noteDisplay}
-              </div>
-            </div>
-            <button class="delete-btn" data-id="${p.id}" aria-label="حذف الدفعة"><i class="fas fa-trash-alt"></i></button>
-          </li>
-        `;
-      });
-      
-      paymentsListEl.innerHTML = html;
-      
-      // إضافة مستمعي الأحداث لأزرار الحذف
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const id = btn.getAttribute('data-id');
-          deletePaymentById(id);
-        });
-      });
-    }
-
-    // دالة بسيطة لمنع XSS
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
-    // --- حذف دفعة عبر المعرف ---
-    function deletePaymentById(id) {
-      payments = payments.filter(p => p.id !== id);
-      savePayments();
-      updateUI();
-    }
-
-    // --- إضافة دفعة جديدة ---
-    function addNewPayment() {
-      // قراءة وتحقق من المبلغ
-      let amount = parseFloat(amountInput.value);
-      if (isNaN(amount) || amount <= 0) {
-        alert('الرجاء إدخال مبلغ صحيح أكبر من صفر.');
-        return;
-      }
-      
-      // تقريب إلى أقرب درهم (يمكن إزالة إذا أردت الكسور)
-      amount = Math.round(amount);
-      if (amount <= 0) {
-        alert('المبلغ يجب أن يكون 1 درهم على الأقل.');
-        return;
-      }
-      
-      const note = noteInput.value.trim();
-      
-      // تحقق من أن المبلغ المدفوع لا يتجاوز المتبقي (اختياري لكن مفيد)
-      const { remaining } = calculateTotals();
-      if (amount > remaining) {
-        const تأكيد = confirm(`المبلغ المتبقي هو ${remaining} درهم. هل تريد إضافة ${amount} درهم؟ (سيتم اعتبار الزيادة كدفعة زائدة)`);
-        if (!تأكيد) return;
-      }
-      
-      // إنشاء دفعة جديدة
-      const newPayment = {
-        id: Date.now() + '-' + Math.random().toString(36).substr(2, 6),
-        amount: amount,
-        date: new Date().toISOString(),
-        note: note,
-      };
-      
-      payments.push(newPayment);
-      savePayments();
-      
-      // مسح الحقول (نترك المبلغ 100 افتراضيًا، نمسح الملاحظة)
-      amountInput.value = '100';
-      noteInput.value = '';
-      
-      updateUI();
-      
-      // تمرير تلقائي إلى آخر دفعة (الأحدث)
-      setTimeout(() => {
-        paymentsListEl.scrollTop = 0; // لأن الأحدث في الأعلى
-      }, 50);
-    }
-
-    // --- إعادة ضبط كامل البيانات ---
-    function resetAllData() {
-      if (payments.length === 0) {
-        // إذا فارغة فقط نقوم بتحديث الواجهة
-        updateUI();
-        return;
-      }
-      const confirmReset = confirm('هل أنت متأكد من مسح جميع الدفعات المسجلة؟ لا يمكن التراجع.');
-      if (!confirmReset) return;
-      
-      payments = [];
-      savePayments();
-      updateUI();
-      amountInput.value = '100';
-      noteInput.value = '';
-    }
-
-    // --- تهيئة التطبيق ---
-    function init() {
-      loadPayments();
-      updateUI();
-      
-      // مستمعو الأحداث
-      addBtn.addEventListener('click', addNewPayment);
-      
-      // إمكانية إضافة عبر زر Enter في حقل المبلغ
-      amountInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          addNewPayment();
-        }
-      });
-      noteInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          addNewPayment();
-        }
-      });
-      
-      resetBtn.addEventListener('click', resetAllData);
-      
-      // ضبط قيمة افتراضية أولية
-      if (amountInput.value === '' || amountInput.value === '0') {
-        amountInput.value = '100';
-      }
-    }
-
-    // ابدأ التطبيق
-    init();
-  })();
-</script>
-</body>
-</html>
+/* غيّر النص الموجود بين علامتي الاقتباس فقط لتعيين كلمة السر الخاصة بك. */
+const APP_PASSWORD='1234';
+let wrongAttempts=0,blockedUntil=0;
+function unlockApp(e){e?.preventDefault();let now=Date.now(),input=$('#passwordInput'),error=$('#lockError'),card=$('#lockCard');if(now<blockedUntil){error.textContent='محاولات كثيرة. انتظر قليلاً ثم حاول من جديد.';return}if(input.value===APP_PASSWORD){wrongAttempts=0;input.value='';error.textContent='';$('#lockScreen').classList.add('hidden');return}wrongAttempts++;input.value='';error.textContent=wrongAttempts>=5?'تم إيقاف المحاولات لمدة 30 ثانية.':'كلمة السر غير صحيحة';card.classList.remove('shake');void card.offsetWidth;card.classList.add('shake');if(wrongAttempts>=5){blockedUntil=Date.now()+30000;wrongAttempts=0}input.focus()}
+function lockApp(){$$('.modal.open').forEach(x=>x.classList.remove('open'));$('#passwordInput').value='';$('#lockError').textContent='';$('#lockScreen').classList.remove('hidden');setTimeout(()=>$('#passwordInput').focus(),60)}
+function togglePassword(){let input=$('#passwordInput');input.type=input.type==='password'?'text':'password';input.focus()}
+const KEY='safaa_tracker_v1',iso=d=>{let x=new Date(d.getTime()-d.getTimezoneOffset()*60000);return x.toISOString().slice(0,10)},today=()=>iso(new Date());
+const dayDiff=(a,b)=>Math.max(0,Math.floor((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000));
+const defaults=()=>({version:1,startDate:today(),best:0,history:{},habits:[{id:'water',name:'شرب الماء',icon:'💧',target:7,checks:{}},{id:'move',name:'الحركة 20 دقيقة',icon:'🏃',target:5,checks:{}}]});
+let data=load(),viewMonth=new Date();function load(){try{return JSON.parse(localStorage.getItem(KEY))||defaults()}catch(e){return defaults()}}function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function openModal(id){$('#'+id).classList.add('open');if(id==='settingsModal')$('#editStart').value=data.startDate}
+function closeModal(id){$('#'+id).classList.remove('open')}function backdrop(e){if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')}
+function streak(){return dayDiff(data.startDate,today())+(data.history[today()]==='good'?1:0)}
+function statusFor(date){if(data.history[date])return data.history[date];if(date>=data.startDate&&date<today())return'good';return''}
+function fillPast(end){let d=new Date(data.startDate+'T12:00:00'),z=new Date(end+'T12:00:00');while(d<=z){let k=iso(d);if(!data.history[k])data.history[k]='good';d.setDate(d.getDate()+1)}}
+function render(){let s=streak();data.best=Math.max(data.best||0,s);$('#streak').textContent=s;$('#best').textContent=data.best;$('#streakLabel').textContent=s===1?'يوم واحد من التقدّم':'أيام من التقدّم';let good=new Set(Object.keys(data.history).filter(k=>data.history[k]==='good'));for(let d=new Date(data.startDate+'T12:00:00');d<new Date(today()+'T12:00:00');d.setDate(d.getDate()+1))good.add(iso(d));$('#cleanTotal').textContent=good.size+(data.history[today()]==='good'?1:0);
+let now=new Date(),prefix=iso(now).slice(0,7),passed=now.getDate(),monthGood=[...good].filter(k=>k.startsWith(prefix)).length;$('#rate').textContent=Math.round(monthGood/passed*100)+'%';renderMini();renderMonth();renderHabits();localStorage.setItem(KEY,JSON.stringify(data))}
+function renderMini(){let box=$('#miniCalendar');box.innerHTML='';let start=new Date();start.setDate(start.getDate()-34);for(let i=0;i<35;i++){let d=new Date(start);d.setDate(start.getDate()+i);box.appendChild(dayCell(d))}}
+function dayCell(d){let k=iso(d),el=document.createElement('div'),st=statusFor(k);el.className='cell '+(st==='good'?'good':st==='bad'?'bad':'')+(k===today()?' today':'');el.textContent=d.getDate();el.title=k+(st==='good'?' — مكتمل':st==='bad'?' — بداية جديدة':'');return el}
+function renderMonth(){let y=viewMonth.getFullYear(),m=viewMonth.getMonth(),box=$('#monthCalendar');$('#monthTitle').textContent=new Intl.DateTimeFormat('ar',{month:'long',year:'numeric'}).format(viewMonth);box.innerHTML='';['ح','ن','ث','ر','خ','ج','س'].forEach(x=>{let e=document.createElement('div');e.className='dow';e.textContent=x;box.appendChild(e)});let first=new Date(y,m,1).getDay();for(let i=0;i<first;i++){let e=document.createElement('div');e.className='cell blank';box.appendChild(e)}for(let d=1;d<=new Date(y,m+1,0).getDate();d++)box.appendChild(dayCell(new Date(y,m,d)))}
+function changeMonth(n){if(n===0)viewMonth=new Date();else viewMonth.setMonth(viewMonth.getMonth()+n);renderMonth()}
+function markClean(){data.history[today()]='good';save();celebrate();toast('ممتاز! سُجّل إنجاز اليوم ✨')}
+function confirmReset(){let d=$('#resetDate').value||today();if(d>today())return toast('اختر تاريخاً ليس في المستقبل');fillPast(new Date(new Date(d+'T12:00:00')-86400000).toISOString().slice(0,10));data.best=Math.max(data.best||0,streak());data.startDate=d;data.history[d]='bad';closeModal('resetModal');save();toast('بداية جديدة بهدوء. أنت ما زلت تتقدّم')}
+function renderHabits(){let box=$('#habitList');if(!data.habits.length){box.innerHTML='<div class="empty glass">لا توجد عادات إضافية بعد.</div>';return}box.innerHTML=data.habits.map(h=>{let done=!!h.checks[today()],count=weekCount(h),pct=Math.min(100,Math.round(count/h.target*100));return`<div class="habit glass"><div class="habit-icon">${h.icon}</div><div class="habit-info" onclick="openHabitModal('${h.id}')"><b>${esc(h.name)}</b><small>${count} من ${h.target} هذا الأسبوع</small><div class="progress"><i style="width:${pct}%"></i></div></div><button class="check ${done?'done':''}" onclick="toggleHabit('${h.id}')" aria-label="تحديد العادة">${done?'✓':'○'}</button></div>`}).join('')}
+function weekCount(h){let n=0,d=new Date(),day=d.getDay(),start=new Date(d);start.setDate(d.getDate()-day);for(let i=0;i<7;i++){let x=new Date(start);x.setDate(start.getDate()+i);if(h.checks[iso(x)])n++}return n}
+function toggleHabit(id){let h=data.habits.find(x=>x.id===id);if(!h)return;h.checks[today()]=!h.checks[today()];save();if(h.checks[today()])toast('خطوة صغيرة، أثر كبير 👏')}
+function openHabitModal(id=''){let h=data.habits.find(x=>x.id===id);$('#habitId').value=id;$('#habitName').value=h?h.name:'';$('#habitIcon').value=h?h.icon:'✨';$('#habitTarget').value=h?h.target:7;$('#habitModalTitle').textContent=h?'تعديل العادة':'عادة جديدة';$('#deleteHabit').style.display=h?'block':'none';openModal('habitModal')}
+function saveHabit(){let id=$('#habitId').value,name=$('#habitName').value.trim();if(!name)return toast('اكتب اسم العادة أولاً');let h=data.habits.find(x=>x.id===id);if(h){h.name=name;h.icon=$('#habitIcon').value;h.target=+$ ('#habitTarget').value}else data.habits.push({id:'h'+Date.now(),name,icon:$('#habitIcon').value,target:+$('#habitTarget').value,checks:{}});closeModal('habitModal');save();toast('تم حفظ العادة')}
+function deleteHabit(){let id=$('#habitId').value;if(!confirm('حذف هذه العادة وسجلها؟'))return;data.habits=data.habits.filter(x=>x.id!==id);closeModal('habitModal');save()}
+function finishSetup(){let d=$('#setupDate').value||today();if(d>today())return toast('اختر تاريخاً ليس في المستقبل');data.startDate=d;localStorage.setItem('safaa_ready','1');closeModal('setupModal');save();toast('رحلتك بدأت. خطوة بخطوة 🤍')}
+function saveStartDate(){let d=$('#editStart').value;if(!d||d>today())return toast('تحقق من التاريخ');data.startDate=d;closeModal('settingsModal');save();toast('تم تحديث تاريخ البداية')}
+function showScreen(id){$$('.screen').forEach(x=>x.classList.toggle('active',x.id===id));$$('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.screen===id));scrollTo({top:0,behavior:'smooth'})}
+function toast(msg){let t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t.timer);t.timer=setTimeout(()=>t.classList.remove('show'),2600)}function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='safaa-backup-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);toast('تم تجهيز النسخة الاحتياطية')}
+function importData(input){let f=input.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.startDate||!Array.isArray(x.habits)||typeof x.history!=='object')throw 0;data=x;save();toast('تم استرجاع بياناتك بنجاح')}catch(e){toast('هذا الملف غير صالح')}input.value=''};r.readAsText(f)}
+function eraseAll(){if(!confirm('هل تريد حذف كل السجل والعادات نهائياً؟'))return;localStorage.removeItem(KEY);localStorage.removeItem('safaa_ready');data=defaults();render();$('#setupDate').value=today();openModal('setupModal')}
+function celebrate(){let colors=['#6ee7f9','#6ee7b7','#f9d56e','#fb7185','#818cf8'];for(let i=0;i<26;i++){let e=document.createElement('i');e.className='confetti';e.style.left=Math.random()*100+'vw';e.style.background=colors[i%colors.length];e.style.setProperty('--x',(Math.random()*180-90)+'px');e.style.animationDelay=Math.random()*.35+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),2300)}}
+const quotes=['كل يوم تختاره لنفسك هو خطوة حقيقية للأمام.','لا تحتاج للكمال؛ تحتاج فقط أن تعود إلى اختيارك.','ركّز على هذا اليوم فقط، وغداً له وقته.','أنت تبني مساحة أهدأ في حياتك، يوماً بعد يوم.'];
+(function init(){let now=new Date();$('#todayText').textContent=new Intl.DateTimeFormat('ar',{weekday:'long',day:'numeric',month:'long'}).format(now);$('#quote').textContent=quotes[now.getDate()%quotes.length];$('#setupDate').value=today();$('#resetDate').value=today();if(!localStorage.getItem('safaa_ready'))openModal('setupModal');render();setTimeout(()=>$('#passwordInput').focus(),120)})();
+</script></body></html>
