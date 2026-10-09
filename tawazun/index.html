@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#0a0f1e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="توازن">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>توازن — حياتك في مكان واحد</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg class="svg-sprite" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v9.1a1.1 1.1 0 0 1-1.1 1.1H15v-6H9v6H4.1A1.1 1.1 0 0 1 3 19.9z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 5h14a2 2 0 0 1 2 2v2H6a3 3 0 0 0 0 6h14v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M20 9H6a3 3 0 0 0 0 6h14z"/><circle cx="7" cy="12" r="1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.7 2.7L16.5 9"/></symbol>
+  <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M7 8v8M4 9.5v5M17 8v8M20 9.5v5M7 12h10M2 11v2M22 11v2"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="m4 20 4.2-1 10.7-10.7a2 2 0 0 0-2.8-2.8L5.4 16.2zM14.8 6.8l2.8 2.8"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v4c0 1.7 2.7 3 6 3s6-1.3 6-3V7M3 11v4c0 1.7 2.7 3 6 3 1.2 0 2.3-.2 3.2-.5"/><path d="M15 11c3.3 0 6 1.3 6 3s-2.7 3-6 3c-1 0-2-.1-2.8-.4M12 17v2c0 1.7 2.7 3 6 3"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+</svg>
+
+<div class="app-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<div id="lockScreen" class="lock-screen hidden" role="dialog" aria-modal="true">
+  <div class="lock-card glass">
+    <div class="brand-mark"><svg><use href="#i-pulse"/></svg></div>
+    <h1>مرحباً بعودتك</h1><p>أدخل رمز الدخول إلى توازن</p>
+    <div id="pinDots" class="pin-dots" aria-label="رمز من أربع خانات"><b></b><b></b><b></b><b></b></div>
+    <div id="pinPad" class="pin-pad"></div>
+    <p id="lockMessage" class="form-note" aria-live="polite"></p>
+  </div>
+</div>
+
+<div id="app" class="app-shell">
+  <header class="topbar glass">
+    <div><span id="greeting" class="eyebrow"></span><h1 id="pageTitle">نظرة عامة</h1></div>
+    <button class="icon-button" id="settingsBtn" aria-label="الإعدادات"><svg><use href="#i-settings"/></svg></button>
+  </header>
+
+  <main id="mainContent">
+    <section class="page active" data-page="home">
+      <div class="hero-card glass">
+        <div><span class="eyebrow">يومك في توازن</span><h2 id="heroDate"></h2><p id="heroSummary">ابدأ بخطوة صغيرة اليوم</p></div>
+        <div class="score-ring" id="dailyRing"><strong>0%</strong><span>اليوم</span></div>
+      </div>
+      <div class="quick-grid">
+        <button class="quick-card glass" data-go="budget"><span class="quick-icon blue"><svg><use href="#i-wallet"/></svg></span><small>المتبقي</small><strong id="homeBalance">0 د.م</strong></button>
+        <button class="quick-card glass" data-go="habits"><span class="quick-icon green"><svg><use href="#i-check"/></svg></span><small>العادات اليوم</small><strong id="homeHabits">0 / 0</strong></button>
+        <button class="quick-card glass" data-go="pushups"><span class="quick-icon orange"><svg><use href="#i-dumbbell"/></svg></span><small>Push-up</small><strong id="homePushups">0</strong></button>
+        <button class="quick-card glass" data-go="kegel"><span class="quick-icon violet"><svg><use href="#i-pulse"/></svg></span><small>كيجل</small><strong id="homeKegel">0 جلسة</strong></button>
+      </div>
+      <div class="section-head"><div><span class="eyebrow">خطتك</span><h2>مهام اليوم</h2></div></div>
+      <div id="todayTasks" class="stack-list"></div>
+      <div class="insight-card glass"><span class="quick-icon cyan"><svg><use href="#i-chart"/></svg></span><div><strong>ملخص الأسبوع</strong><p id="weeklyInsight">أضف بياناتك لتظهر لك قراءة بسيطة لتقدمك.</p></div></div>
+    </section>
+
+    <section class="page" data-page="budget">
+      <div class="month-strip glass"><button id="prevMonth" class="icon-button"><svg class="rtl-flip"><use href="#i-chevron"/></svg></button><button id="monthPickerBtn" class="month-label"><span id="budgetMonth"></span><small>اضغط لاختيار شهر</small></button><button id="nextMonth" class="icon-button"><svg><use href="#i-chevron"/></svg></button><input type="month" id="monthInput" hidden></div>
+      <div class="balance-card glass"><span class="eyebrow">الرصيد المتبقي</span><h2 id="budgetBalance">0 د.م</h2><div class="budget-stats"><span><small>الدخل</small><b id="budgetIncome">0</b></span><span><small>المصروف</small><b id="budgetSpent">0</b></span><span><small>الادخار</small><b id="budgetSaved">0</b></span></div><div class="progress"><i id="budgetProgress"></i></div><button class="text-button" id="editIncomeBtn"><svg><use href="#i-edit"/></svg> تعديل الدخل واسم الميزانية</button></div>
+      <div class="section-head"><div><span class="eyebrow">التقسيمات</span><h2>فئات الميزانية</h2></div><button class="add-button" id="addCategoryBtn"><svg><use href="#i-plus"/></svg> إضافة</button></div>
+      <div id="categoryList" class="category-grid"></div>
+      <div class="section-head"><div><span class="eyebrow">الحركة</span><h2>آخر المصاريف</h2></div><button class="add-button" id="addExpenseBtn"><svg><use href="#i-plus"/></svg> مصروف</button></div>
+      <div id="expenseList" class="stack-list"></div>
+      <div class="section-head"><div><span class="eyebrow">الأهداف</span><h2>أهداف الادخار</h2></div><button class="add-button" id="addGoalBtn"><svg><use href="#i-plus"/></svg> هدف</button></div>
+      <div id="goalList" class="stack-list"></div>
+    </section>
+
+    <section class="page" data-page="habits">
+      <div id="mainHabitCard" class="recovery-card glass"></div>
+      <div class="section-head"><div><span class="eyebrow">اليوم</span><h2>عاداتي</h2></div><button class="add-button" id="addHabitBtn"><svg><use href="#i-plus"/></svg> عادة</button></div>
+      <div id="habitList" class="habit-list"></div>
+      <div class="calendar-card glass"><div class="calendar-head"><button id="calPrev" class="icon-button"><svg class="rtl-flip"><use href="#i-chevron"/></svg></button><h3 id="calTitle"></h3><button id="calNext" class="icon-button"><svg><use href="#i-chevron"/></svg></button></div><div class="week-row"><span>ح</span><span>ن</span><span>ث</span><span>ر</span><span>خ</span><span>ج</span><span>س</span></div><div id="habitCalendar" class="calendar-grid"></div><div class="legend"><span><i class="done"></i> يوم ناجح</span><span><i class="missed"></i> تعثر</span></div></div>
+    </section>
+
+    <section class="page" data-page="pushups">
+      <div class="workout-hero glass"><span class="quick-icon orange"><svg><use href="#i-dumbbell"/></svg></span><div><span class="eyebrow">تدريب اليوم</span><h2 id="pushupPlanTitle">Push-up</h2><p id="pushupPlanMeta"></p></div></div>
+      <div class="counter-card glass"><span class="eyebrow">العدد الحالي</span><div class="big-counter"><button id="pushMinus" aria-label="إنقاص">−</button><strong id="pushCounter">0</strong><button id="pushPlus" aria-label="زيادة">+</button></div><div class="step-row"><button data-add="5">+5</button><button data-add="10">+10</button><button data-add="20">+20</button></div><button id="savePushSession" class="primary-button"><svg><use href="#i-check"/></svg> حفظ التمرين</button></div>
+      <div class="section-head"><div><span class="eyebrow">الخطة</span><h2>برنامجك</h2></div><button id="editPushPlan" class="add-button"><svg><use href="#i-edit"/></svg> تعديل</button></div>
+      <div id="pushPlan" class="plan-card glass"></div>
+      <div class="section-head"><div><span class="eyebrow">السجل</span><h2>آخر التمارين</h2></div></div><div id="pushHistory" class="stack-list"></div>
+    </section>
+
+    <section class="page" data-page="kegel">
+      <div class="kegel-hero glass"><span class="eyebrow">مؤقت كيجل</span><h2 id="kegelPhase">جاهز للبدء</h2><div id="kegelTimer" class="timer-ring"><strong>00:00</strong><span id="kegelRound">0 / 0</span></div><p id="kegelCue">تنفّس بشكل طبيعي ولا تشد البطن أو الأرداف.</p><div class="timer-actions"><button id="kegelStart" class="primary-button"><svg><use href="#i-play"/></svg> ابدأ</button><button id="kegelStop" class="secondary-button"><svg><use href="#i-stop"/></svg> إيقاف</button></div></div>
+      <div class="section-head"><div><span class="eyebrow">البرنامج</span><h2>اختر المستوى</h2></div></div>
+      <div id="kegelLevels" class="level-grid"></div>
+      <div class="info-card glass"><svg><use href="#i-pulse"/></svg><div><strong>تذكير مريح</strong><p>الجودة أهم من القوة. أوقف التمرين إذا شعرت بألم، ولا تحبس النفس. هذا المؤقت للتنظيم وليس بديلاً عن نصيحة مختص.</p></div></div>
+      <div class="section-head"><div><span class="eyebrow">السجل</span><h2>جلسات هذا الأسبوع</h2></div></div><div id="kegelHistory" class="stack-list"></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav glass" aria-label="التنقل الرئيسي">
+    <button class="active" data-page-target="home"><svg><use href="#i-home"/></svg><span>الرئيسية</span></button>
+    <button data-page-target="budget"><svg><use href="#i-wallet"/></svg><span>الميزانية</span></button>
+    <button data-page-target="habits"><svg><use href="#i-check"/></svg><span>العادات</span></button>
+    <button data-page-target="pushups"><svg><use href="#i-dumbbell"/></svg><span>Push-up</span></button>
+    <button data-page-target="kegel"><svg><use href="#i-pulse"/></svg><span>كيجل</span></button>
+  </nav>
+</div>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-sheet glass"><div class="sheet-grip"></div><div class="modal-head"><h2 id="modalTitle"></h2><button id="modalClose" class="icon-button"><svg><use href="#i-x"/></svg></button></div><form id="modalForm"><div id="modalBody"></div><button class="primary-button full" type="submit">حفظ التغييرات</button></form></div></div>
+<div id="toast" class="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
