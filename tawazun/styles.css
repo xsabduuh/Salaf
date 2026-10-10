@@ -38,3 +38,11 @@ input,textarea,select{user-select:text;-webkit-user-select:text}button{color:inh
 button:active{transform:scale(.97)}
 .icon-button:active,.mini-action:active,.add-button:active,.text-button:active{transform:scale(.9)}
 .bottom-nav button.active svg{animation:pop .35s ease}
+
+/* أقسام جديدة: الديون + صندوق الطوارئ + مصروف اليوم */
+.bottom-nav{grid-template-columns:repeat(6,1fr)}
+.pill-action{border:0;border-radius:11px;background:rgba(66,219,169,.14);color:#45dfac;font-size:12px;font-weight:800;padding:9px 12px;white-space:nowrap}
+.pill-action:active{transform:scale(.94)}
+.fund-actions{display:flex;gap:10px;margin-top:12px}
+.fund-actions .primary-button,.fund-actions .secondary-button{flex:1}
+.item-actions{display:flex;align-items:center;gap:6px}
